@@ -326,6 +326,11 @@ public class Commands{
                 messages.deleteMessages();
             }
         });
+        
+      adminHandler.register("kick", "<@user>", "Kick a member from guild.") {
+          if (messages.getMessage().getMentionedMembers().isEmpty()){
+              message.text("you must mention member");
+          }
     }
 
     private Seq<String> getWarnings(User user){
