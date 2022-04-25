@@ -525,16 +525,21 @@ public class Messages extends ListenerAdapter{
                 }else{
                     user = msg.getAuthor();
                 }
+                int[] blacklistedUsers = {737869099811733527L, 681882952342175754L}
+                
+                if(user.getIdLong() == blacklistedUsers[]){
+                    text(msg, "no");
+                }else{
+                    String link = user.getEffectiveAvatarUrl() + "?size=1024";
 
-                String link = user.getEffectiveAvatarUrl() + "?size=1024";
-
-                EmbedBuilder embed = new EmbedBuilder();
-                embed.setColor(normalColor);
-                embed.setTitle("Avatar: " + user.getName() + "#" + user.getDiscriminator());
-                embed.setImage(link);
-                embed.setDescription("[Link](" + link + ")");
-                embed.setFooter("Requested by " + msg.getAuthor().getName() + "#" + msg.getAuthor().getDiscriminator());
-                msg.getChannel().sendMessageEmbeds(embed.build()).queue();
+                    EmbedBuilder embed = new EmbedBuilder();
+                    embed.setColor(normalColor);
+                    embed.setTitle("Avatar: " + user.getName() + "#" + user.getDiscriminator());
+                    embed.setImage(link);
+                    embed.setDescription("[Link](" + link + ")");
+                    embed.setFooter("Requested by " + msg.getAuthor().getName() + "#" + msg.getAuthor().getDiscriminator());
+                    msg.getChannel().sendMessageEmbeds(embed.build()).queue();
+                }
 
             }catch(Exception e){
                 errDelete(msg, "Incorrect name format or ID.");
